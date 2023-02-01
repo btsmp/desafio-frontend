@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "cnpj": "00.000.000/0001-00",
+      "socialReason": "Industrias de microprocessadores LTDA",
+      "fantasyName": "Micron"
+    },
+    {
+      "id": 2,
+      "cnpj": "00.000.000/0001-66",
+      "socialReason": "VFlows Consultoria em TI LTDA",
+      "fantasyName": "VFlows Consultoria em TI"
+    }
+  ],
+  "contracts": [
+    {
+      "id": 1,
+      "userId": 1,
+      "contractName": "Título do primeiro contrato de exemplo",
+      "contractCode": "11002200-01",
+      "technicalRetentionPercent": 5
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "contractName": "Título do segundo contrato de exemplo",
+      "contractCode": "11002200-01",
+      "technicalRetentionPercent": 10
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "contractName": "Título do terceiro contrato de exemplo",
+      "contractCode": "11002200-01",
+      "technicalRetentionPercent": 5
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "contractName": "Título do quarto contrato de exemplo",
+      "contractCode": "11002200-01",
+      "technicalRetentionPercent": 15
+    }
+  ]
+}
