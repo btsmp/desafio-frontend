@@ -5,12 +5,13 @@ import GlobalStyles from './styles/global'
 
 import { UserProvider } from './contexts/UserContext'
 import { Routes } from './routes'
+import { ContractProvider } from './contexts/ContractContext'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <UserProvider>
+  <UserProvider>
+    <ContractProvider>
       <GlobalStyles />
       <Routes />
-    </UserProvider>
-  </React.StrictMode>,
+    </ContractProvider>
+  </UserProvider>,
 )

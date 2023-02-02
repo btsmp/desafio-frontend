@@ -22,8 +22,7 @@ export function SignIn() {
   async function handleFormSubmit(formData, { reset }) {
     try {
       await cnpjValidate(formData)
-      const response = await api.get(`/users?cnpj=${formData.cnpj}`)
-      const userData = response.data
+      const { data: userData } = await api.get(`/users?cnpj=${formData.cnpj}`)
       if (userData.length === 0) {
         throw new Error('CNPJ sem contratos ativos.')
       }

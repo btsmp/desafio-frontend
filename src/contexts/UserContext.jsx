@@ -3,21 +3,25 @@ import { createContext, useState, useEffect } from 'react'
 export const UserContext = createContext({})
 
 export function UserProvider({ children }) {
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState()
   const tokenUser = '@vflows-user'
 
   async function signIn(data) {
     localStorage.setItem(tokenUser, JSON.stringify(data))
     setUserData(data)
   }
-
+  async function signOut() {
+    localStorage.removeItem(tokenUser)
+    setUserData()
+    console.log(userData)
+  }
   useEffect(() => {
     const user = localStorage.getItem(tokenUser)
     setUserData(JSON.parse(user))
   }, [])
 
   return (
-    <UserContext.Provider value={{ userData, signIn }}>
+    <UserContext.Provider value={{ userData, signIn, signOut }}>
       {children}
     </UserContext.Provider>
   )
