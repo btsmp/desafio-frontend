@@ -8,4 +8,4 @@
 - Para estilização: TailwindCSS e Styled-Components. também utilizei uma bibliteca para facilitar a integração de ambas tecnologias: **tailwind-styled-components**, que se aproxima com a syntax do styled-components sem deixar de utilizar toda praticidade que o tailwind proporciona.
 - Estilizei algum dos inputs com **react-input-mask** para melhoria visual dos valores de entrada.
 - Requisições foram feitas com a biblioteca Axios.
-- Lint padronizado pela RocketSeat
+- Lint padronizado pela Rocketseat
