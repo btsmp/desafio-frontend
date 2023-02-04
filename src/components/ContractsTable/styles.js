@@ -28,9 +28,3 @@ export const MyTable = styled.table`
     padding: 0.2rem;
   }
 `
-export const StyledCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  width: 20px;
-  height: 20px;
-  background-color: #ffffff;
-  border: 1px solid #000000;
-`

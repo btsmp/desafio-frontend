@@ -7,4 +7,5 @@ export const Container = tw.div`
   flex-col
   gap-2
   relative
+  max-w-6xl
 `

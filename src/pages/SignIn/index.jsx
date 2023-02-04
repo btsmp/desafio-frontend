@@ -1,7 +1,7 @@
+import { InputWithMask } from '../../components/InputWithMask'
 import { ButtonGreen } from '../../components/ButtonGreen'
 import { UserContext } from '../../contexts/UserContext'
 import { ImgWrapper } from '../../components/ImgWrapper'
-import { Input } from '../../components/Input'
 import { Container, MyForm } from './style'
 import { useContext, useRef } from 'react'
 import { api } from '../../lib/axios'
@@ -20,6 +20,7 @@ export function SignIn() {
   }
 
   async function handleFormSubmit(formData, { reset }) {
+    console.log(formData)
     try {
       await cnpjValidate(formData)
       const { data: userData } = await api.get(`/users?cnpj=${formData.cnpj}`)
@@ -39,7 +40,12 @@ export function SignIn() {
       <ImgWrapper />
       <h1 className="uppercase font-bold text-lg">Pagamento de forncedor</h1>
       <MyForm ref={formRef} onSubmit={handleFormSubmit}>
-        <Input name="cnpj" label="CNPJ" />
+        <InputWithMask
+          name="cnpj"
+          label="CNPJ"
+          mask="99.999.999/9999-99"
+          maskChar={null}
+        />
         <ButtonGreen type="submit">Acessar</ButtonGreen>
       </MyForm>
     </Container>

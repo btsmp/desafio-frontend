@@ -1,8 +1,9 @@
-import { api } from '../../lib/axios'
-import { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../../contexts/UserContext'
-import { MyTable, StyledCheckbox } from './styles'
 import { ContractContext } from '../../contexts/ContractContext'
+import { UserContext } from '../../contexts/UserContext'
+import { NewCheckbox } from '../StyledCheckbox/styles'
+import { useContext, useEffect, useState } from 'react'
+import { api } from '../../lib/axios'
+import { MyTable } from './styles'
 
 export function ContractsTable() {
   const [contracts, setContracts] = useState([])
@@ -49,7 +50,7 @@ export function ContractsTable() {
             return (
               <tr key={contract.id}>
                 <td className="pr-4" id={contract.id}>
-                  <StyledCheckbox onClick={(e) => handleSelect(e)} />
+                  <NewCheckbox onClick={(e) => handleSelect(e)} />
                 </td>
                 <td className="">{contract.name}</td>
                 <td className="text-center">{contract.code}</td>

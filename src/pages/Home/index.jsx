@@ -37,7 +37,9 @@ export function Home() {
     <Shape>
       <Header />
       <Title>Contratos Vinculados</Title>
-      <ContractsTable />
+      <main className="flex flex-col">
+        <ContractsTable />
+      </main>
       <NavButtons previousFunc={handleSignOut} nextFunc={handleNextClick} />
       <Footer />
     </Shape>

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useField } from '@unform/core'
 import { InputStyled, InputWrapper } from './styles'
 
-export function Input({ name, label, ...rest }) {
+export function InputWithMask({ name, label, mask, type, ...rest }) {
   const { fieldName, registerField } = useField(name)
   const inputRef = useRef()
 
@@ -28,10 +28,10 @@ export function Input({ name, label, ...rest }) {
         {label}
       </label>
       <InputStyled
-        mask="99.999.999/9999-99"
+        mask={mask}
         name={name}
         ref={inputRef}
-        type="text"
+        type={type}
         id={label}
         {...rest}
       />
