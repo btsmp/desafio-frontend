@@ -20,7 +20,6 @@ export function SignIn() {
   }
 
   async function handleFormSubmit(formData, { reset }) {
-    console.log(formData)
     try {
       await cnpjValidate(formData)
       const { data: userData } = await api.get(`/users?cnpj=${formData.cnpj}`)

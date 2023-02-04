@@ -13,7 +13,6 @@ export function UserProvider({ children }) {
   async function signOut() {
     localStorage.removeItem(tokenUser)
     setUserData()
-    console.log(userData)
   }
   useEffect(() => {
     const user = localStorage.getItem(tokenUser)

@@ -4,7 +4,7 @@ import { NewCheckbox } from '../StyledCheckbox/styles'
 import { useContext, useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 import { MyTable } from './styles'
-
+import mGlass from '../../assets/mGlass.svg'
 export function ContractsTable() {
   const [contracts, setContracts] = useState([])
   const { contractId, setContractId } = useContext(ContractContext)
@@ -58,7 +58,9 @@ export function ContractsTable() {
                   {contract.technicalRetentionPercent}%
                 </td>
                 <td className="text-center">
-                  <button></button>
+                  <button className='bg-[#2C70B9] p-2 rounded-sm'>
+                    <img src={mGlass} alt="Lupa" width="15px" />
+                  </button>
                 </td>
               </tr>
             )

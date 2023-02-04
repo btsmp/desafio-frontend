@@ -2,7 +2,7 @@ import { StyledCheckbox } from '../../components/StyledCheckbox'
 import { InputNoMask } from '../../components/InputNoMask'
 import { useNavigate, useParams } from 'react-router-dom'
 import { NavButtons } from '../../components/NavButtons'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { Header } from '../../components/Header'
 import { Footer } from '../../components/Footer'
 import { Title } from '../../components/Title'
@@ -10,10 +10,13 @@ import { Shape } from '../../components/Shape'
 import { api } from '../../lib/axios'
 import { Form } from '@unform/web'
 import trash from '../../assets/trash.svg'
+import { InputFile } from '../../components/InputFile'
+import { UserContext } from '../../contexts/UserContext'
 
 export function Contract() {
   const formRef = useRef(null)
   const navigate = useNavigate()
+  const { signOut } = useContext(UserContext)
 
   const { id } = useParams()
   const [contractInfo, setContractInfo] = useState({})
@@ -21,20 +24,20 @@ export function Contract() {
   const [files, setFiles] = useState([])
   const [value, setValue] = useState()
   const { technicalRetentionPercent } = contractInfo || 0
-  console.log(files)
-  console.log(files.length)
 
   function handleFilesUploaded(e) {
     const filesSelected = e.target.files[0]
     setFiles((prevState) => [...prevState, filesSelected])
   }
-  function handleFormSubmit(formData) {
+  function sendData(formData) {
+    alert('Solicitação 999999 cadastrada com sucesso!')
     console.log(formData)
+    signOut()
+    navigate('/')
   }
   function handleToggleTaxesField() {
     setTaxesField(!taxesField)
   }
-
   function handleTrash(e) {
     e.preventDefault()
     const nameOfFile = e.target.id
@@ -71,16 +74,13 @@ export function Contract() {
           <p className="text-center w-full">{contractInfo.name}</p>
         </div>
 
-        <Form
-          ref={formRef}
-          onSubmit={handleFormSubmit}
-          className="flex flex-col gap-7"
-        >
+        <Form ref={formRef} onSubmit={sendData} className="flex flex-col gap-7">
           <fieldset className="flex gap-8">
             <InputNoMask
               name="noteNumber"
               label="Número da nota"
               type="number"
+              min="1"
               required
             />
             <InputNoMask
@@ -99,6 +99,7 @@ export function Contract() {
               name="value"
               label="Valor"
               type="number"
+              min="1"
               onChange={(e) => calculateInvoiceRevenue(e)}
               required
               currency
@@ -117,6 +118,7 @@ export function Contract() {
                   label="ISSQN"
                   type="number"
                   currency
+                  min="1"
                   disabled={!taxesField}
                   required={taxesField}
                 />
@@ -124,6 +126,7 @@ export function Contract() {
                   name="IRRF"
                   label="IRRF"
                   type="number"
+                  min="1"
                   currency
                   disabled={!taxesField}
                   required={taxesField}
@@ -132,6 +135,7 @@ export function Contract() {
                   name="CSLL"
                   label="CSLL"
                   type="number"
+                  min="1"
                   currency
                   disabled={!taxesField}
                   required={taxesField}
@@ -140,6 +144,7 @@ export function Contract() {
                   name="COFINS"
                   label="COFINS"
                   type="number"
+                  min="1"
                   currency
                   disabled={!taxesField}
                   required={taxesField}
@@ -148,6 +153,7 @@ export function Contract() {
                   name="INSS"
                   label="INSS"
                   type="number"
+                  min="1"
                   currency
                   disabled={!taxesField}
                   required={taxesField}
@@ -156,6 +162,7 @@ export function Contract() {
                   name="PIS"
                   label="PIS"
                   type="number"
+                  min="1"
                   currency
                   disabled={!taxesField}
                   required={taxesField}
@@ -186,19 +193,8 @@ export function Contract() {
           </div>
           <div className="flex gap-4">
             <seciton>
-              <label
-                htmlFor="invoice"
-                className="bg-[#67685A] p-3 text-white font-semibold cursor-pointer"
-              >
-                Anexar nota fiscal
-              </label>
-
-              <input
-                type="file"
+              <InputFile
                 name="invoice"
-                id="invoice"
-                className="hidden"
-                accept=".pdf"
                 onChange={(e) => handleFilesUploaded(e)}
               />
             </seciton>
